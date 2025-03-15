@@ -1,29 +1,33 @@
 
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 import { ArrowLeft, Heart, ExternalLink, MessageSquare, Share2, Check } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card";
 import { Separator } from "../components/ui/separator";
-import { brands } from "../data/brands";
 import { Brand } from "../types";
 import { useToast } from "../hooks/use-toast";
 import { Badge } from "../components/ui/badge";
+import { fetchBrandById } from "../services/brandService";
 
 export default function BrandDetailPage() {
   const { id } = useParams<{ id: string }>();
-  const [brand, setBrand] = useState<Brand | null>(null);
   const [likes, setLikes] = useState(0);
   const [hasLiked, setHasLiked] = useState(false);
   const { toast } = useToast();
 
+  const { data: brand, isLoading, error } = useQuery({
+    queryKey: ['brand', id],
+    queryFn: () => fetchBrandById(id || ''),
+    enabled: !!id
+  });
+
   useEffect(() => {
-    const foundBrand = brands.find(b => b.id === id);
-    if (foundBrand) {
-      setBrand(foundBrand);
-      setLikes(foundBrand.likes);
+    if (brand) {
+      setLikes(brand.likes);
     }
-  }, [id]);
+  }, [brand]);
 
   const handleLike = () => {
     if (!hasLiked) {
@@ -51,7 +55,29 @@ export default function BrandDetailPage() {
     });
   };
 
-  if (!brand) {
+  if (isLoading) {
+    return (
+      <div className="container py-8 px-4 md:px-6">
+        <div className="animate-pulse">
+          <div className="h-8 bg-gray-200 w-40 mb-6 rounded"></div>
+          <div className="grid md:grid-cols-[2fr_1fr] gap-6">
+            <div>
+              <div className="h-12 bg-gray-200 w-3/4 mb-4 rounded"></div>
+              <div className="h-6 bg-gray-200 w-1/2 mb-6 rounded"></div>
+              <div className="h-60 bg-gray-200 mb-6 rounded-lg"></div>
+              <div className="h-40 bg-gray-200 mb-6 rounded-lg"></div>
+            </div>
+            <div>
+              <div className="h-40 bg-gray-200 mb-6 rounded-lg"></div>
+              <div className="h-60 bg-gray-200 rounded-lg"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (error || !brand) {
     return (
       <div className="container py-8 px-4 md:px-6 text-center">
         <h1 className="text-2xl font-bold">Brand not found</h1>

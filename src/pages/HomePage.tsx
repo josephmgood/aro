@@ -1,13 +1,18 @@
 
 import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { FeaturedBrand } from "../components/FeaturedBrand";
 import { BrandGrid } from "../components/ProductGrid";
 import { CategoriesList } from "../components/CategoriesList";
-import { brands } from "../data/brands";
+import { fetchFeaturedBrand } from "../services/brandService";
 
 export default function HomePage() {
   const [activeCategory, setActiveCategory] = useState("All");
-  const featuredBrand = brands.find(brand => brand.featured) || brands[0];
+  
+  const { data: featuredBrand, isLoading } = useQuery({
+    queryKey: ['featuredBrand'],
+    queryFn: fetchFeaturedBrand
+  });
 
   const handleCategorySelect = (category: string) => {
     setActiveCategory(category);
@@ -19,7 +24,13 @@ export default function HomePage() {
         <h1 className="section-title text-3xl md:text-4xl">Discover Direct-to-Consumer Brands</h1>
         <p className="text-muted-foreground mb-8">Find innovative, sustainable, and quality D2C brands in one place</p>
         
-        <FeaturedBrand brand={featuredBrand} />
+        {isLoading ? (
+          <div className="animate-pulse">
+            <div className="h-[300px] bg-gray-200 rounded-lg mb-8"></div>
+          </div>
+        ) : featuredBrand ? (
+          <FeaturedBrand brand={featuredBrand} />
+        ) : null}
       </section>
       
       <section>

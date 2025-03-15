@@ -9,7 +9,89 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      [_ in never]: never
+      brands: {
+        Row: {
+          category: string
+          created_at: string
+          description: string
+          featured: boolean
+          founder_avatar_url: string
+          founder_name: string
+          id: string
+          image_url: string
+          launch_date: string
+          likes: number
+          name: string
+          pricing: string | null
+          sustainability: string | null
+          tagline: string
+          updated_at: string
+          website_url: string
+        }
+        Insert: {
+          category: string
+          created_at?: string
+          description: string
+          featured?: boolean
+          founder_avatar_url: string
+          founder_name: string
+          id?: string
+          image_url: string
+          launch_date: string
+          likes?: number
+          name: string
+          pricing?: string | null
+          sustainability?: string | null
+          tagline: string
+          updated_at?: string
+          website_url: string
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          description?: string
+          featured?: boolean
+          founder_avatar_url?: string
+          founder_name?: string
+          id?: string
+          image_url?: string
+          launch_date?: string
+          likes?: number
+          name?: string
+          pricing?: string | null
+          sustainability?: string | null
+          tagline?: string
+          updated_at?: string
+          website_url?: string
+        }
+        Relationships: []
+      }
+      ingredients: {
+        Row: {
+          brand_id: string
+          id: string
+          name: string
+        }
+        Insert: {
+          brand_id: string
+          id?: string
+          name: string
+        }
+        Update: {
+          brand_id?: string
+          id?: string
+          name?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ingredients_brand_id_fkey"
+            columns: ["brand_id"]
+            isOneToOne: false
+            referencedRelation: "brands"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
