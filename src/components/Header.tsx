@@ -10,10 +10,10 @@ export function Header() {
       <div className="container flex items-center justify-between h-16 px-4 md:px-6">
         <div className="flex items-center gap-4">
           <Link to="/" className="flex items-center gap-2">
-            <div className="bg-ph-orange w-8 h-8 rounded-md flex items-center justify-center">
-              <span className="text-white font-bold">P</span>
+            <div className="bg-primary w-8 h-8 rounded-md flex items-center justify-center">
+              <span className="text-white font-bold">D</span>
             </div>
-            <span className="font-bold text-xl hidden sm:inline-block">ProductHunt</span>
+            <span className="font-bold text-xl hidden sm:inline-block text-primary">DirectBrands</span>
           </Link>
         </div>
         
@@ -21,20 +21,20 @@ export function Header() {
           <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
           <Input
             type="search"
-            placeholder="Search products..."
+            placeholder="Search brands..."
             className="pl-8 bg-background"
           />
         </div>
         
         <div className="flex items-center gap-4">
           <Button variant="ghost" size="sm" asChild>
-            <Link to="/">Today</Link>
+            <Link to="/">Discover</Link>
           </Button>
           <Button variant="ghost" size="sm" asChild>
-            <Link to="/topics">Topics</Link>
+            <Link to="/categories">Categories</Link>
           </Button>
-          <Button size="sm" asChild>
-            <Link to="/submit">Submit</Link>
+          <Button size="sm" asChild className="bg-accent hover:bg-accent/90">
+            <Link to="/submit">Submit Brand</Link>
           </Button>
         </div>
       </div>

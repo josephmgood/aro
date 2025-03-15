@@ -1,16 +1,20 @@
 
-export interface Product {
+export interface Brand {
   id: string;
   name: string;
   tagline: string;
   description: string;
   imageUrl: string;
-  url: string;
+  websiteUrl: string;
   category: string;
-  votes: number;
+  likes: number;
+  featured: boolean;
   launchDate: string;
-  maker: {
+  founder: {
     name: string;
     avatarUrl: string;
   };
+  pricing?: string;
+  sustainability?: string;
+  ingredients?: string[];
 }

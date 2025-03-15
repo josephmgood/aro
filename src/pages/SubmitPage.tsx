@@ -20,8 +20,8 @@ export default function SubmitPage() {
     setTimeout(() => {
       setIsSubmitting(false);
       toast({
-        title: "Product submitted!",
-        description: "Your product has been submitted for review.",
+        title: "Brand submitted!",
+        description: "Your brand has been submitted for review.",
       });
       
       // Reset form
@@ -31,22 +31,22 @@ export default function SubmitPage() {
   };
 
   return (
-    <div className="container py-6 px-4 md:px-6 max-w-3xl">
-      <h1 className="text-3xl font-bold mb-2">Submit a Product</h1>
-      <p className="text-muted-foreground mb-6">Share your product with the community</p>
+    <div className="container py-8 px-4 md:px-6 max-w-3xl">
+      <h1 className="section-title text-3xl md:text-4xl mb-2">Submit a Brand</h1>
+      <p className="text-muted-foreground mb-8">Share a direct-to-consumer brand with our community</p>
       
       <Card>
-        <CardHeader>
-          <CardTitle>Product Details</CardTitle>
+        <CardHeader className="bg-primary/5 rounded-t-lg">
+          <CardTitle>Brand Details</CardTitle>
           <CardDescription>
-            Fill out the form below to submit your product for review.
+            Fill out the form below to submit a D2C brand for review.
           </CardDescription>
         </CardHeader>
-        <CardContent>
+        <CardContent className="pt-6">
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="name">Product Name *</Label>
-              <Input id="name" required placeholder="Enter your product name" />
+              <Label htmlFor="name">Brand Name *</Label>
+              <Input id="name" required placeholder="Enter the brand name" />
             </div>
             
             <div className="space-y-2">
@@ -54,7 +54,7 @@ export default function SubmitPage() {
               <Input 
                 id="tagline" 
                 required 
-                placeholder="A short, catchy description of your product" 
+                placeholder="A short, catchy description of the brand" 
                 maxLength={60} 
               />
               <p className="text-xs text-muted-foreground">Maximum 60 characters</p>
@@ -67,20 +67,25 @@ export default function SubmitPage() {
                   <SelectValue placeholder="Select a category" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="marketing">Marketing</SelectItem>
-                  <SelectItem value="developer-tools">Developer Tools</SelectItem>
-                  <SelectItem value="productivity">Productivity</SelectItem>
-                  <SelectItem value="design-tools">Design Tools</SelectItem>
-                  <SelectItem value="social-media">Social Media</SelectItem>
-                  <SelectItem value="ai">AI</SelectItem>
-                  <SelectItem value="finance">Finance</SelectItem>
+                  <SelectItem value="beauty">Beauty</SelectItem>
+                  <SelectItem value="fashion">Fashion</SelectItem>
+                  <SelectItem value="food">Food</SelectItem>
+                  <SelectItem value="health">Health</SelectItem>
+                  <SelectItem value="home">Home</SelectItem>
+                  <SelectItem value="wellness">Wellness</SelectItem>
+                  <SelectItem value="pets">Pets</SelectItem>
                 </SelectContent>
               </Select>
             </div>
             
             <div className="space-y-2">
-              <Label htmlFor="url">Product URL *</Label>
-              <Input id="url" type="url" required placeholder="https://" />
+              <Label htmlFor="websiteUrl">Brand Website *</Label>
+              <Input id="websiteUrl" type="url" required placeholder="https://" />
+            </div>
+            
+            <div className="space-y-2">
+              <Label htmlFor="pricing">Price Range</Label>
+              <Input id="pricing" placeholder="e.g., $15-$50" />
             </div>
             
             <div className="space-y-2">
@@ -88,13 +93,18 @@ export default function SubmitPage() {
               <Textarea 
                 id="description" 
                 required
-                placeholder="Tell us about your product..." 
+                placeholder="Tell us about this brand..." 
                 className="min-h-[120px]" 
               />
             </div>
             
             <div className="space-y-2">
-              <Label>Product Thumbnail *</Label>
+              <Label htmlFor="sustainability">Sustainability</Label>
+              <Input id="sustainability" placeholder="e.g., Vegan, plastic-free, ethical sourcing" />
+            </div>
+            
+            <div className="space-y-2">
+              <Label>Brand Logo/Image *</Label>
               <div className="border-2 border-dashed rounded-md p-6 text-center">
                 <p className="text-sm text-muted-foreground">
                   Drag and drop an image here, or click to browse
@@ -107,8 +117,8 @@ export default function SubmitPage() {
             </div>
             
             <div className="pt-4">
-              <Button type="submit" className="w-full" disabled={isSubmitting}>
-                {isSubmitting ? "Submitting..." : "Submit Product"}
+              <Button type="submit" className="w-full bg-primary hover:bg-primary/90" disabled={isSubmitting}>
+                {isSubmitting ? "Submitting..." : "Submit Brand"}
               </Button>
             </div>
           </form>

@@ -1,31 +1,31 @@
 
 import { useEffect, useState } from "react";
-import { ProductCard } from "./ProductCard";
-import { Product } from "../types";
-import { products as initialProducts } from "../data/products";
+import { BrandCard } from "./BrandCard";
+import { Brand } from "../types";
+import { brands as initialBrands } from "../data/brands";
 
-interface ProductGridProps {
+interface BrandGridProps {
   filter?: string;
 }
 
-export function ProductGrid({ filter }: ProductGridProps) {
-  const [products, setProducts] = useState<Product[]>(initialProducts);
+export function BrandGrid({ filter }: BrandGridProps) {
+  const [brands, setBrands] = useState<Brand[]>(initialBrands);
   
   useEffect(() => {
     if (filter) {
-      const filtered = initialProducts.filter(
-        product => product.category.toLowerCase() === filter.toLowerCase()
+      const filtered = initialBrands.filter(
+        brand => brand.category.toLowerCase() === filter.toLowerCase()
       );
-      setProducts(filtered);
+      setBrands(filtered);
     } else {
-      setProducts(initialProducts);
+      setBrands(initialBrands);
     }
   }, [filter]);
 
   return (
-    <div className="grid gap-4">
-      {products.map(product => (
-        <ProductCard key={product.id} product={product} />
+    <div className="grid gap-6 animate-fade-in">
+      {brands.map(brand => (
+        <BrandCard key={brand.id} brand={brand} />
       ))}
     </div>
   );

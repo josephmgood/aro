@@ -1,75 +1,88 @@
 
+import { Link } from "react-router-dom";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card";
 
-const topics = [
+const categories = [
   {
-    id: "marketing",
-    name: "Marketing",
-    description: "Tools and services to help grow your business and reach new customers.",
-    productCount: 423,
-    color: "bg-green-100",
+    id: "beauty",
+    name: "Beauty",
+    description: "Clean, ethical, and innovative beauty brands focused on natural ingredients and unique formulations.",
+    brandCount: 42,
+    color: "bg-accent/20",
+    icon: "✨"
   },
   {
-    id: "developer-tools",
-    name: "Developer Tools",
-    description: "Software and resources that make developers' lives easier.",
-    productCount: 356,
-    color: "bg-blue-100",
+    id: "fashion",
+    name: "Fashion",
+    description: "Sustainable, ethical fashion brands creating high-quality, timeless pieces with transparent supply chains.",
+    brandCount: 36,
+    color: "bg-muted/20",
+    icon: "👕"
   },
   {
-    id: "productivity",
-    name: "Productivity",
-    description: "Apps and tools to help you get more done in less time.",
-    productCount: 512,
-    color: "bg-purple-100",
+    id: "food",
+    name: "Food",
+    description: "Innovative food brands offering better-for-you alternatives, unique flavors, and sustainable packaging.",
+    brandCount: 51,
+    color: "bg-primary/20",
+    icon: "🍽️"
   },
   {
-    id: "design-tools",
-    name: "Design Tools",
-    description: "Resources for designers to create beautiful digital experiences.",
-    productCount: 287,
-    color: "bg-pink-100",
+    id: "health",
+    name: "Health",
+    description: "Forward-thinking health brands creating supplements, vitamins, and wellness products backed by science.",
+    brandCount: 29,
+    color: "bg-secondary/20",
+    icon: "💊"
   },
   {
-    id: "social-media",
-    name: "Social Media",
-    description: "Tools to enhance your social media presence and engagement.",
-    productCount: 198,
-    color: "bg-yellow-100",
+    id: "home",
+    name: "Home",
+    description: "Eco-friendly home goods brands offering sustainable alternatives to everyday products.",
+    brandCount: 19,
+    color: "bg-accent/20",
+    icon: "🏠"
   },
   {
-    id: "ai",
-    name: "AI",
-    description: "Artificial intelligence tools and platforms for various applications.",
-    productCount: 345,
-    color: "bg-indigo-100",
+    id: "wellness",
+    name: "Wellness",
+    description: "Holistic wellness brands focused on mental, physical, and emotional wellbeing through innovative products.",
+    brandCount: 34,
+    color: "bg-primary/20",
+    icon: "🧘"
   },
   {
-    id: "finance",
-    name: "Finance",
-    description: "Tools for personal and business financial management.",
-    productCount: 176,
-    color: "bg-green-100",
+    id: "pets",
+    name: "Pets",
+    description: "Premium pet care brands offering natural, nutritious products for your furry friends.",
+    brandCount: 17,
+    color: "bg-secondary/20",
+    icon: "🐾"
   },
 ];
 
-export default function TopicsPage() {
+export default function CategoriesPage() {
   return (
-    <div className="container py-6 px-4 md:px-6">
-      <h1 className="text-3xl font-bold mb-2">Topics</h1>
-      <p className="text-muted-foreground mb-6">Browse products by category</p>
+    <div className="container py-8 px-4 md:px-6">
+      <h1 className="section-title text-3xl md:text-4xl mb-2">Categories</h1>
+      <p className="text-muted-foreground mb-8">Browse direct-to-consumer brands by category</p>
       
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {topics.map((topic) => (
-          <Card key={topic.id}>
-            <CardHeader className={`${topic.color} rounded-t-lg`}>
-              <CardTitle>{topic.name}</CardTitle>
-              <CardDescription className="text-foreground/70">{topic.productCount} products</CardDescription>
-            </CardHeader>
-            <CardContent className="pt-4">
-              <p className="text-sm text-muted-foreground">{topic.description}</p>
-            </CardContent>
-          </Card>
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {categories.map((category) => (
+          <Link to={`/?category=${category.id}`} key={category.id}>
+            <Card className="h-full transition-all hover:shadow-md hover:border-primary/20">
+              <CardHeader className={`${category.color} rounded-t-lg`}>
+                <div className="flex items-center gap-2">
+                  <span className="text-2xl">{category.icon}</span>
+                  <CardTitle>{category.name}</CardTitle>
+                </div>
+                <CardDescription className="text-foreground/70">{category.brandCount} brands</CardDescription>
+              </CardHeader>
+              <CardContent className="pt-4">
+                <p className="text-sm text-muted-foreground">{category.description}</p>
+              </CardContent>
+            </Card>
+          </Link>
         ))}
       </div>
     </div>

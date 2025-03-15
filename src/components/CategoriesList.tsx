@@ -1,16 +1,15 @@
 
-import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
 
 const categories = [
   "All",
-  "Marketing",
-  "Developer Tools",
-  "Productivity",
-  "Design Tools",
-  "Social Media",
-  "AI",
-  "Finance",
+  "Beauty",
+  "Fashion",
+  "Food",
+  "Health",
+  "Home",
+  "Wellness",
+  "Pets",
 ];
 
 interface CategoriesListProps {
@@ -33,7 +32,7 @@ export function CategoriesList({ activeCategory = "All", onSelectCategory }: Cat
           variant={activeCategory === category ? "default" : "outline"}
           size="sm"
           onClick={() => handleCategoryClick(category)}
-          className={activeCategory === category ? "bg-ph-orange hover:bg-ph-orange/90" : ""}
+          className={activeCategory === category ? "bg-primary hover:bg-primary/90" : ""}
         >
           {category}
         </Button>
