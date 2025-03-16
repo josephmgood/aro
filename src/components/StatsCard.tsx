@@ -16,7 +16,7 @@ interface StatsCardProps {
 export function StatsCard({ title, value, brand, person }: StatsCardProps) {
   if (brand) {
     return (
-      <div className="rounded-lg p-6 flex items-center justify-between bg-brandColors-mediumTan shadow-sm border border-brandColors-darkTan/20">
+      <div className="rounded-lg p-6 flex items-center justify-between bg-white shadow-sm border border-brandColors-darkTan">
         <div className="flex-1">
           <div className="text-brandColors-darkBlue/70 text-sm mb-2">{title}</div>
           <Link to={`/brand/${brand.id}`} className="block">
@@ -40,7 +40,7 @@ export function StatsCard({ title, value, brand, person }: StatsCardProps) {
     };
     
     return (
-      <div className="rounded-lg p-6 flex items-center justify-between bg-brandColors-darkTan shadow-sm border border-brandColors-darkBlue/20">
+      <div className="rounded-lg p-6 flex items-center justify-between bg-white shadow-sm border border-brandColors-darkTan">
         <div className="flex-1">
           <div className="text-brandColors-darkBlue/70 text-sm mb-2">{title}</div>
           <div className="text-brandColors-darkBlue text-3xl font-bold">{updatedPerson.name}</div>
@@ -58,7 +58,7 @@ export function StatsCard({ title, value, brand, person }: StatsCardProps) {
   }
   
   return (
-    <div className="bg-brandColors-lightCream rounded-lg p-6 shadow-sm border border-brandColors-darkTan/10">
+    <div className="bg-white rounded-lg p-6 shadow-sm border border-brandColors-darkTan">
       <div className="text-brandColors-darkBlue/70 text-sm mb-2">{title}</div>
       <div className="text-brandColors-darkBlue text-3xl font-bold">{value}</div>
     </div>
