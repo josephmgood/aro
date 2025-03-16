@@ -1,21 +1,31 @@
 
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Button } from "./ui/button";
 
 export function Header() {
   const location = useLocation();
+  const navigate = useNavigate();
   
   // Check which nav item is active
   const isActive = (path: string) => {
-    // For category paths, check if the pathname includes the category
-    if (path.startsWith('/category/')) {
-      const category = path.split('/').pop();
-      return location.pathname === path || location.pathname === `/categories?category=${category}`;
+    if (path === "/") {
+      return location.pathname === "/" && !location.search.includes("category=");
+    }
+    
+    // For category paths, check if the search params include the category
+    if (path.startsWith('category:')) {
+      const category = path.split(':')[1];
+      return location.search.includes(`category=${category}`);
     }
     return location.pathname === path;
   };
 
   const categories = ["Drinks", "Snacks", "Food", "Beauty", "Home", "Health"];
+
+  const handleCategoryClick = (category: string) => {
+    // Navigate to home page with category filter
+    navigate(`/?category=${category}`);
+  };
 
   return (
     <header className="border-b sticky top-0 z-10 bg-black text-white">
@@ -30,8 +40,8 @@ export function Header() {
           {categories.map((category) => (
             <NavItem 
               key={category}
-              to={`/categories?category=${category}`} 
-              isActive={isActive(`/categories?category=${category}`)}
+              onClick={() => handleCategoryClick(category)}
+              isActive={isActive(`category:${category}`)}
             >
               {category}
             </NavItem>
@@ -50,15 +60,15 @@ export function Header() {
 }
 
 interface NavItemProps {
-  to: string;
   isActive: boolean;
   children: React.ReactNode;
+  onClick: () => void;
 }
 
-function NavItem({ to, isActive, children }: NavItemProps) {
+function NavItem({ isActive, children, onClick }: NavItemProps) {
   return (
-    <Link
-      to={to}
+    <button
+      onClick={onClick}
       className={`px-4 py-2 text-sm font-medium rounded-full transition-colors ${
         isActive
           ? "bg-white text-black"
@@ -66,6 +76,6 @@ function NavItem({ to, isActive, children }: NavItemProps) {
       }`}
     >
       {children}
-    </Link>
+    </button>
   );
 }

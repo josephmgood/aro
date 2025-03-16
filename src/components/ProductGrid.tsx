@@ -3,7 +3,8 @@ import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { BrandCard } from "./BrandCard";
 import { Brand } from "../types";
-import { fetchBrands, fetchBrandsByCategory } from "../services/brandService";
+import { fetchBrands } from "../services/brandService";
+import { brands as mockBrands } from "../data/brands"; // Use mock data for now
 
 interface BrandGridProps {
   filter?: string;
@@ -12,26 +13,36 @@ interface BrandGridProps {
 export function BrandGrid({ filter }: BrandGridProps) {
   const [brands, setBrands] = useState<Brand[]>([]);
   
-  const { data: allBrands, isLoading: isLoadingAll } = useQuery({
+  const { data: allBrands, isLoading } = useQuery({
     queryKey: ['brands'],
     queryFn: fetchBrands
   });
-  
-  const { data: filteredBrands, isLoading: isLoadingFiltered } = useQuery({
-    queryKey: ['brands', filter],
-    queryFn: () => filter ? fetchBrandsByCategory(filter) : fetchBrands(),
-    enabled: !!filter
-  });
 
+  // Filter brands based on category
   useEffect(() => {
-    if (filter && filteredBrands) {
-      setBrands(filteredBrands);
-    } else if (allBrands) {
-      setBrands(allBrands);
+    if (allBrands) {
+      if (filter) {
+        // Filter brands by the selected category
+        setBrands(allBrands.filter(brand => 
+          brand.category.toLowerCase() === filter.toLowerCase()
+        ));
+      } else {
+        // If no filter, show all brands
+        setBrands(allBrands);
+      }
+    } else {
+      // Fallback to mock data if API data isn't available
+      if (filter) {
+        setBrands(mockBrands.filter(brand => 
+          brand.category.toLowerCase() === filter.toLowerCase()
+        ));
+      } else {
+        setBrands(mockBrands);
+      }
     }
-  }, [filter, allBrands, filteredBrands]);
+  }, [filter, allBrands]);
 
-  if (isLoadingAll || (filter && isLoadingFiltered)) {
+  if (isLoading) {
     return (
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 animate-pulse">
         {[1, 2, 3, 4, 5, 6, 7, 8].map((index) => (
@@ -44,7 +55,7 @@ export function BrandGrid({ filter }: BrandGridProps) {
   if (brands.length === 0) {
     return (
       <div className="text-center py-10">
-        <p className="text-lg text-muted-foreground">No brands found</p>
+        <p className="text-lg text-white">No brands found in this category</p>
       </div>
     );
   }

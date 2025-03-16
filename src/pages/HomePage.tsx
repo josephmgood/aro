@@ -1,6 +1,7 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
+import { useLocation } from "react-router-dom";
 import { BrandGrid } from "../components/ProductGrid";
 import { StatsCard } from "../components/StatsCard";
 import { fetchBrands } from "../services/brandService";
@@ -8,7 +9,15 @@ import { Brand } from "../types";
 import { brands } from "../data/brands"; // Import the mock brands data
 
 export default function HomePage() {
-  const [activeCategory, setActiveCategory] = useState("All");
+  const location = useLocation();
+  const [activeCategory, setActiveCategory] = useState<string | undefined>(undefined);
+  
+  // Extract category from URL search params
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const category = params.get("category");
+    setActiveCategory(category || undefined);
+  }, [location.search]);
   
   const { data: brandsData } = useQuery({
     queryKey: ['brands'],
@@ -20,8 +29,6 @@ export default function HomePage() {
 
   // Get the founder data from Allbirds for Maker of the Month
   const makerOfMonth = allbirdsBrand?.founder;
-
-  const totalBrands = brandsData?.length || 64;
 
   return (
     <div className="min-h-screen">
@@ -40,13 +47,11 @@ export default function HomePage() {
           />
         </div>
         
-        {/* Brands Section */}
-        <div className="mb-10">
+        {/* Brands Section with proper spacing */}
+        <div className="mb-10 mt-16">
           <h2 className="text-2xl font-bold mb-6 text-white">Brands</h2>
           
-          <BrandGrid 
-            filter={activeCategory === "All" ? undefined : activeCategory} 
-          />
+          <BrandGrid filter={activeCategory} />
         </div>
       </div>
     </div>
