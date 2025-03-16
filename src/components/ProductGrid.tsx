@@ -33,9 +33,9 @@ export function BrandGrid({ filter }: BrandGridProps) {
 
   if (isLoadingAll || (filter && isLoadingFiltered)) {
     return (
-      <div className="grid gap-6 animate-pulse">
-        {[1, 2, 3, 4, 5].map((index) => (
-          <div key={index} className="h-24 bg-gray-200 rounded-lg"></div>
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 animate-pulse">
+        {[1, 2, 3, 4, 5, 6, 7, 8].map((index) => (
+          <div key={index} className="bg-gray-200 rounded-lg h-48"></div>
         ))}
       </div>
     );
@@ -50,7 +50,7 @@ export function BrandGrid({ filter }: BrandGridProps) {
   }
 
   return (
-    <div className="grid gap-6 animate-fade-in">
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
       {brands.map(brand => (
         <BrandCard key={brand.id} brand={brand} />
       ))}

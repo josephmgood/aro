@@ -1,52 +1,44 @@
 
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { FeaturedBrand } from "../components/FeaturedBrand";
 import { BrandGrid } from "../components/ProductGrid";
-import { CategoriesList } from "../components/CategoriesList";
-import { fetchFeaturedBrand } from "../services/brandService";
+import { StatsCard } from "../components/StatsCard";
+import { fetchBrands } from "../services/brandService";
 
 export default function HomePage() {
   const [activeCategory, setActiveCategory] = useState("All");
   
-  const { data: featuredBrand, isLoading } = useQuery({
-    queryKey: ['featuredBrand'],
-    queryFn: fetchFeaturedBrand
+  const { data: brands } = useQuery({
+    queryKey: ['brands'],
+    queryFn: fetchBrands
   });
 
   const handleCategorySelect = (category: string) => {
     setActiveCategory(category);
   };
 
+  // Calculate total sales as a mock value
+  const totalSales = "127.5 ETH";
+  const totalBrands = brands?.length || 64;
+
   return (
-    <div className="container py-8 px-4 md:px-6">
-      <section className="mb-10">
-        <h1 className="section-title text-3xl md:text-4xl">Discover Direct-to-Consumer Brands</h1>
-        <p className="text-muted-foreground mb-8">Find innovative, sustainable, and quality D2C brands in one place</p>
-        
-        {isLoading ? (
-          <div className="animate-pulse">
-            <div className="h-[300px] bg-gray-200 rounded-lg mb-8"></div>
-          </div>
-        ) : featuredBrand ? (
-          <FeaturedBrand brand={featuredBrand} />
-        ) : null}
-      </section>
-      
-      <section>
-        <div className="flex justify-between items-center mb-6">
-          <h2 className="section-title mb-0 text-xl md:text-2xl">Browse by Category</h2>
+    <div className="min-h-screen">
+      <div className="container py-8 px-4 md:px-6">
+        {/* Stats Section */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+          <StatsCard title="Total sales" value={totalSales} />
+          <StatsCard title="Total Brands" value={totalBrands.toString()} />
         </div>
         
-        <CategoriesList 
-          activeCategory={activeCategory} 
-          onSelectCategory={handleCategorySelect} 
-        />
-        
-        <BrandGrid 
-          filter={activeCategory === "All" ? undefined : activeCategory} 
-        />
-      </section>
+        {/* Brands Section */}
+        <div className="mb-10">
+          <h2 className="text-2xl font-bold mb-6">Brands</h2>
+          
+          <BrandGrid 
+            filter={activeCategory === "All" ? undefined : activeCategory} 
+          />
+        </div>
+      </div>
     </div>
   );
 }
