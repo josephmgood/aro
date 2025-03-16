@@ -49,7 +49,7 @@ export default function HomePage() {
         
         {/* Brands Section with proper spacing */}
         <div className="mb-10 mt-16">
-          <h2 className="text-2xl font-bold mb-6 text-[#1B4D3E]">Brands</h2>
+          <h2 className="text-2xl font-bold mb-6 text-[#102C57]">Brands</h2>
           
           <BrandGrid filter={activeCategory} />
         </div>
