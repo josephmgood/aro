@@ -13,10 +13,10 @@
   transition: filter 300ms;
 }
 .logo:hover {
-  filter: drop-shadow(0 0 2em #F38C79aa);
+  filter: drop-shadow(0 0 2em #DAC0A3aa);
 }
 .logo.react:hover {
-  filter: drop-shadow(0 0 2em #F38C79aa);
+  filter: drop-shadow(0 0 2em #DAC0A3aa);
 }
 
 @keyframes logo-spin {
@@ -43,11 +43,11 @@
 }
 
 .like-button:hover {
-  background-color: rgba(3, 76, 83, 0.1);
+  background-color: rgba(16, 44, 87, 0.1);
 }
 
 .category-badge {
-  @apply text-xs px-2 py-1 bg-brandColors-darkTeal/10 text-brandColors-darkTeal rounded-full;
+  @apply text-xs px-2 py-1 bg-brandColors-darkBlue/10 text-brandColors-darkBlue rounded-full;
 }
 
 .brand-image {

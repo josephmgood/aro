@@ -14,7 +14,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 0%;
 
-    --primary: 185 100% 23%;
+    --primary: 217 72% 20%;
     --primary-foreground: 0 0% 98%;
 
     --secondary: 0 0% 96.1%;
@@ -37,32 +37,32 @@
   }
 
   .dark {
-    --background: 185 90% 17%;
+    --background: 217 72% 20%;
     --foreground: 0 0% 98%;
 
-    --card: 185 90% 17%;
+    --card: 217 72% 20%;
     --card-foreground: 0 0% 98%;
 
-    --popover: 185 90% 17%;
+    --popover: 217 72% 20%;
     --popover-foreground: 0 0% 98%;
 
     --primary: 0 0% 98%;
-    --primary-foreground: 185 90% 17%;
+    --primary-foreground: 217 72% 20%;
 
-    --secondary: 185 30% 25%;
+    --secondary: 217 30% 25%;
     --secondary-foreground: 0 0% 98%;
 
-    --muted: 185 30% 25%;
+    --muted: 217 30% 25%;
     --muted-foreground: 0 0% 63.9%;
 
-    --accent: 185 30% 25%;
+    --accent: 217 30% 25%;
     --accent-foreground: 0 0% 98%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 185 30% 25%;
-    --input: 185 30% 25%;
+    --border: 217 30% 25%;
+    --input: 217 30% 25%;
     --ring: 0 0% 83.9%;
   }
 }
@@ -72,7 +72,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-brandColors-lightCream text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
@@ -83,7 +83,7 @@
   }
   
   .category-badge {
-    @apply text-xs px-2 py-1 bg-brandColors-darkTeal/10 text-brandColors-darkTeal rounded-full;
+    @apply text-xs px-2 py-1 bg-brandColors-darkBlue/10 text-brandColors-darkBlue rounded-full;
   }
   
   .brand-image {
@@ -91,6 +91,6 @@
   }
   
   .like-button:hover {
-    @apply bg-brandColors-darkTeal/10;
+    @apply bg-brandColors-darkBlue/10;
   }
 }

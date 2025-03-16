@@ -32,8 +32,8 @@ export function CategoriesList({ activeCategory = "All", onSelectCategory }: Cat
           size="sm"
           onClick={() => handleCategoryClick(category)}
           className={activeCategory === category 
-            ? "bg-brandColors-salmon text-brandColors-darkTeal hover:bg-brandColors-salmon/90" 
-            : "border-brandColors-mediumTeal/40 text-brandColors-darkTeal hover:bg-brandColors-lightSalmon/50"}
+            ? "bg-brandColors-darkTan text-brandColors-darkBlue hover:bg-brandColors-darkTan/90" 
+            : "border-brandColors-darkBlue/40 text-brandColors-darkBlue hover:bg-brandColors-mediumTan/50"}
         >
           {category}
         </Button>
