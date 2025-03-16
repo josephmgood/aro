@@ -66,7 +66,7 @@ export default {
 				brandColors: {
 					darkBlue: '#102C57',
 					darkTan: '#DAC0A3',
-					mediumTan: '#EADBC8',
+					mediumTan: '#DAC0A3',
 					lightCream: '#FEFAF6'
 				}
 			},

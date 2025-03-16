@@ -50,7 +50,7 @@ export function Header() {
 
         {/* Submit Brand button */}
         <Link to="/submit">
-          <Button variant="outline" className="border-white text-brandColors-darkBlue bg-brandColors-mediumTan hover:bg-brandColors-darkTan hover:text-white">
+          <Button variant="outline" className="border-white text-brandColors-darkBlue bg-brandColors-darkTan hover:bg-brandColors-darkTan hover:text-white">
             Submit Brand
           </Button>
         </Link>
