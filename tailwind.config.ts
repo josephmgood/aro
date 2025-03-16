@@ -64,10 +64,10 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				brandColors: {
-					darkTeal: '#1B4D3E',
-					mediumTeal: '#3d7a77',
-					salmon: '#e39a8e',
-					lightSalmon: '#f8c6bd'
+					darkTeal: '#034C53',
+					mediumTeal: '#007074',
+					salmon: '#F38C79',
+					lightSalmon: '#FFC1B4'
 				}
 			},
 			borderRadius: {

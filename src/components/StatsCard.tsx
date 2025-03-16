@@ -16,11 +16,11 @@ interface StatsCardProps {
 export function StatsCard({ title, value, brand, person }: StatsCardProps) {
   if (brand) {
     return (
-      <div className="rounded-lg p-6 flex items-center justify-between bg-gradient-to-br from-[#e6e9f0] to-[#eef1f5] shadow-sm border border-[#1B4D3E]/10">
+      <div className="rounded-lg p-6 flex items-center justify-between bg-gradient-to-br from-brandColors-lightSalmon/30 to-white shadow-sm border border-brandColors-salmon/20">
         <div className="flex-1">
-          <div className="text-[#1B4D3E]/70 text-sm mb-2">{title}</div>
+          <div className="text-brandColors-darkTeal/70 text-sm mb-2">{title}</div>
           <Link to={`/brand/${brand.id}`} className="block">
-            <div className="text-[#1B4D3E] text-3xl font-bold hover:text-[#1B4D3E]/80 transition-colors">{brand.name}</div>
+            <div className="text-brandColors-darkTeal text-3xl font-bold hover:text-brandColors-mediumTeal transition-colors">{brand.name}</div>
           </Link>
         </div>
         <div className="w-24 h-24 ml-4 overflow-hidden rounded-lg">
@@ -34,15 +34,15 @@ export function StatsCard({ title, value, brand, person }: StatsCardProps) {
   
   if (person) {
     return (
-      <div className="rounded-lg p-6 flex items-center justify-between bg-gradient-to-br from-[#accbee] to-[#e7f0fd] shadow-sm border border-[#1B4D3E]/10">
+      <div className="rounded-lg p-6 flex items-center justify-between bg-gradient-to-br from-brandColors-mediumTeal/30 to-brandColors-lightSalmon/20 shadow-sm border border-brandColors-mediumTeal/20">
         <div className="flex-1">
-          <div className="text-[#1B4D3E]/70 text-sm mb-2">{title}</div>
-          <div className="text-[#1B4D3E] text-3xl font-bold">{person.name}</div>
+          <div className="text-brandColors-darkTeal/70 text-sm mb-2">{title}</div>
+          <div className="text-brandColors-darkTeal text-3xl font-bold">{person.name}</div>
         </div>
         <div className="w-24 h-24 ml-4">
           <Avatar className="w-full h-full rounded-lg">
             <AvatarImage src={person.avatarUrl} alt={person.name} className="w-full h-full object-cover" />
-            <AvatarFallback className="w-full h-full bg-[#1B4D3E]/10 text-[#1B4D3E] text-2xl rounded-lg">
+            <AvatarFallback className="w-full h-full bg-brandColors-salmon/20 text-brandColors-darkTeal text-2xl rounded-lg">
               {person.name.charAt(0)}
             </AvatarFallback>
           </Avatar>
@@ -52,9 +52,9 @@ export function StatsCard({ title, value, brand, person }: StatsCardProps) {
   }
   
   return (
-    <div className="bg-gradient-to-br from-[#F2FCE2] to-[#e6e9f0] rounded-lg p-6 shadow-sm border border-[#1B4D3E]/10">
-      <div className="text-[#1B4D3E]/70 text-sm mb-2">{title}</div>
-      <div className="text-[#1B4D3E] text-3xl font-bold">{value}</div>
+    <div className="bg-gradient-to-br from-white to-brandColors-lightSalmon/20 rounded-lg p-6 shadow-sm border border-brandColors-salmon/10">
+      <div className="text-brandColors-darkTeal/70 text-sm mb-2">{title}</div>
+      <div className="text-brandColors-darkTeal text-3xl font-bold">{value}</div>
     </div>
   );
 }

@@ -31,7 +31,9 @@ export function CategoriesList({ activeCategory = "All", onSelectCategory }: Cat
           variant={activeCategory === category ? "default" : "outline"}
           size="sm"
           onClick={() => handleCategoryClick(category)}
-          className={activeCategory === category ? "bg-white text-[#1B4D3E] hover:bg-gray-200" : "border-gray-400 text-white hover:bg-[#1B4D3E]/80"}
+          className={activeCategory === category 
+            ? "bg-brandColors-salmon text-brandColors-darkTeal hover:bg-brandColors-salmon/90" 
+            : "border-brandColors-mediumTeal/40 text-brandColors-darkTeal hover:bg-brandColors-lightSalmon/50"}
         >
           {category}
         </Button>

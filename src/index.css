@@ -14,7 +14,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 0%;
 
-    --primary: 154 48% 20%;
+    --primary: 185 100% 23%;
     --primary-foreground: 0 0% 98%;
 
     --secondary: 0 0% 96.1%;
@@ -37,32 +37,32 @@
   }
 
   .dark {
-    --background: 154 48% 20%;
+    --background: 185 90% 17%;
     --foreground: 0 0% 98%;
 
-    --card: 154 48% 10%;
+    --card: 185 90% 17%;
     --card-foreground: 0 0% 98%;
 
-    --popover: 154 48% 10%;
+    --popover: 185 90% 17%;
     --popover-foreground: 0 0% 98%;
 
     --primary: 0 0% 98%;
-    --primary-foreground: 154 48% 20%;
+    --primary-foreground: 185 90% 17%;
 
-    --secondary: 154 30% 25%;
+    --secondary: 185 30% 25%;
     --secondary-foreground: 0 0% 98%;
 
-    --muted: 154 30% 25%;
+    --muted: 185 30% 25%;
     --muted-foreground: 0 0% 63.9%;
 
-    --accent: 154 30% 25%;
+    --accent: 185 30% 25%;
     --accent-foreground: 0 0% 98%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 154 30% 25%;
-    --input: 154 30% 25%;
+    --border: 185 30% 25%;
+    --input: 185 30% 25%;
     --ring: 0 0% 83.9%;
   }
 }
@@ -80,5 +80,17 @@
 @layer components {
   .brand-card {
     @apply transition-all duration-300 ease-in-out hover:shadow-lg;
+  }
+  
+  .category-badge {
+    @apply text-xs px-2 py-1 bg-brandColors-darkTeal/10 text-brandColors-darkTeal rounded-full;
+  }
+  
+  .brand-image {
+    @apply rounded-lg object-cover;
+  }
+  
+  .like-button:hover {
+    @apply bg-brandColors-darkTeal/10;
   }
 }
