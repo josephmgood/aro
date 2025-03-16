@@ -64,7 +64,7 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				brandColors: {
-					darkTeal: '#1a4a46',
+					darkTeal: '#1B4D3E',
 					mediumTeal: '#3d7a77',
 					salmon: '#e39a8e',
 					lightSalmon: '#f8c6bd'

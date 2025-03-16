@@ -28,7 +28,7 @@ export function Header() {
   };
 
   return (
-    <header className="border-b sticky top-0 z-10 bg-black text-white">
+    <header className="border-b sticky top-0 z-10 bg-[#1B4D3E] text-white">
       <div className="container flex items-center justify-between h-16 px-4 md:px-6">
         {/* Logo */}
         <Link to="/" className="font-bold text-xl text-white">
@@ -50,7 +50,7 @@ export function Header() {
 
         {/* Submit Brand button */}
         <Link to="/submit">
-          <Button variant="outline" className="border-white text-black bg-white hover:bg-gray-200 hover:text-black">
+          <Button variant="outline" className="border-white text-[#1B4D3E] bg-white hover:bg-gray-200 hover:text-[#1B4D3E]">
             Submit Brand
           </Button>
         </Link>
@@ -71,8 +71,8 @@ function NavItem({ isActive, children, onClick }: NavItemProps) {
       onClick={onClick}
       className={`px-4 py-2 text-sm font-medium rounded-full transition-colors ${
         isActive
-          ? "bg-white text-black"
-          : "text-white hover:bg-gray-800"
+          ? "bg-white text-[#1B4D3E]"
+          : "text-white hover:bg-[#1B4D3E]/80"
       }`}
     >
       {children}

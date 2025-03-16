@@ -16,7 +16,7 @@ interface StatsCardProps {
 export function StatsCard({ title, value, brand, person }: StatsCardProps) {
   if (brand) {
     return (
-      <div className="bg-black rounded-lg p-6 flex items-center justify-between">
+      <div className="bg-[#1B4D3E] rounded-lg p-6 flex items-center justify-between">
         <div className="flex-1">
           <div className="text-gray-400 text-sm mb-2">{title}</div>
           <Link to={`/brand/${brand.id}`} className="block">
@@ -34,7 +34,7 @@ export function StatsCard({ title, value, brand, person }: StatsCardProps) {
   
   if (person) {
     return (
-      <div className="bg-black rounded-lg p-6 flex items-center justify-between">
+      <div className="bg-[#1B4D3E] rounded-lg p-6 flex items-center justify-between">
         <div className="flex-1">
           <div className="text-gray-400 text-sm mb-2">{title}</div>
           <div className="text-white text-3xl font-bold">{person.name}</div>
@@ -52,7 +52,7 @@ export function StatsCard({ title, value, brand, person }: StatsCardProps) {
   }
   
   return (
-    <div className="bg-black rounded-lg p-6">
+    <div className="bg-[#1B4D3E] rounded-lg p-6">
       <div className="text-gray-400 text-sm mb-2">{title}</div>
       <div className="text-white text-3xl font-bold">{value}</div>
     </div>

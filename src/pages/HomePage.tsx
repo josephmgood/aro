@@ -31,7 +31,7 @@ export default function HomePage() {
   const makerOfMonth = allbirdsBrand?.founder;
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white">
       <div className="container py-8 px-4 md:px-6">
         {/* Stats Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
@@ -49,7 +49,7 @@ export default function HomePage() {
         
         {/* Brands Section with proper spacing */}
         <div className="mb-10 mt-16">
-          <h2 className="text-2xl font-bold mb-6 text-white">Brands</h2>
+          <h2 className="text-2xl font-bold mb-6 text-[#1B4D3E]">Brands</h2>
           
           <BrandGrid filter={activeCategory} />
         </div>

@@ -38,8 +38,8 @@ export function FeaturedBrand({ brand }: FeaturedBrandProps) {
   };
 
   return (
-    <Card className="overflow-hidden mb-8 border-2 border-accent/30 transition-all animate-fade-in">
-      <div className="bg-primary text-white px-4 py-1 text-sm font-medium">
+    <Card className="overflow-hidden mb-8 border-2 border-[#1B4D3E]/30 transition-all animate-fade-in">
+      <div className="bg-[#1B4D3E] text-white px-4 py-1 text-sm font-medium">
         Featured Brand
       </div>
       <Link to={`/brand/${brand.id}`}>
@@ -55,13 +55,13 @@ export function FeaturedBrand({ brand }: FeaturedBrandProps) {
             <div>
               <div className="flex justify-between items-start">
                 <div>
-                  <h2 className="font-bold text-2xl text-primary">{brand.name}</h2>
+                  <h2 className="font-bold text-2xl text-[#1B4D3E]">{brand.name}</h2>
                   <p className="text-lg text-muted-foreground mt-1">{brand.tagline}</p>
                 </div>
                 <Button 
                   variant={hasLiked ? "default" : "outline"} 
                   size="icon" 
-                  className={`h-12 w-12 rounded-full like-button ${hasLiked ? 'bg-accent text-white hover:bg-accent/90' : ''}`}
+                  className={`h-12 w-12 rounded-full like-button ${hasLiked ? 'bg-[#1B4D3E] text-white hover:bg-[#1B4D3E]/90' : ''}`}
                   onClick={handleLike}
                 >
                   <Heart className={`h-6 w-6 ${hasLiked ? 'fill-current animate-pulse-scale' : ''}`} />
@@ -92,7 +92,7 @@ export function FeaturedBrand({ brand }: FeaturedBrandProps) {
                 />
                 <span className="text-sm">by {brand.founder.name}</span>
               </div>
-              <Button variant="outline" size="sm" className="gap-1 text-primary border-primary/30 hover:bg-primary/10">
+              <Button variant="outline" size="sm" className="gap-1 text-[#1B4D3E] border-[#1B4D3E]/30 hover:bg-[#1B4D3E]/10">
                 Visit <ArrowUpRight className="h-4 w-4" />
               </Button>
             </div>

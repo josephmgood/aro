@@ -18,8 +18,8 @@ export function BrandCard({ brand }: BrandCardProps) {
           />
         </div>
         <div className="p-3">
-          <h3 className="text-sm font-medium text-gray-900 truncate">{brand.name}</h3>
-          <div className="mt-2 text-xs font-medium">
+          <h3 className="text-sm font-medium text-[#1B4D3E] truncate">{brand.name}</h3>
+          <div className="mt-2 text-xs font-medium text-[#1B4D3E]/80">
             {brand.category}
           </div>
           <div className="flex items-center mt-1">
