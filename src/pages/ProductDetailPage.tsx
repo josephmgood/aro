@@ -151,7 +151,7 @@ export default function BrandDetailPage() {
                 <Button asChild className="bg-primary hover:bg-primary/90">
                   <a href={brand.websiteUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1">
                     <ExternalLink className="h-4 w-4" />
-                    Visit Website
+                    Shop Now
                   </a>
                 </Button>
                 <Button variant="outline" onClick={handleShare} className="flex items-center gap-1">
