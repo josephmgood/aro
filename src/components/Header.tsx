@@ -29,27 +29,29 @@ export function Header() {
 
   return (
     <header className="border-b sticky top-0 z-10 bg-brandColors-darkBlue text-white">
-      <div className="container flex items-center justify-between h-16 px-4 md:px-6">
+      <div className="container flex items-center h-16 px-4 md:px-6">
         {/* Logo */}
-        <Link to="/" className="font-bold text-xl text-white">
+        <Link to="/" className="font-bold text-xl text-white mr-auto">
           Aro
         </Link>
 
-        {/* Category navigation */}
-        <nav className="hidden md:flex items-center space-x-1">
-          {categories.map((category) => (
-            <NavItem 
-              key={category}
-              onClick={() => handleCategoryClick(category)}
-              isActive={isActive(`category:${category}`)}
-            >
-              {category}
-            </NavItem>
-          ))}
+        {/* Category navigation - adjusted for better centering */}
+        <nav className="hidden md:flex items-center absolute left-1/2 transform -translate-x-1/2">
+          <div className="flex items-center space-x-1">
+            {categories.map((category) => (
+              <NavItem 
+                key={category}
+                onClick={() => handleCategoryClick(category)}
+                isActive={isActive(`category:${category}`)}
+              >
+                {category}
+              </NavItem>
+            ))}
+          </div>
         </nav>
 
         {/* Submit Brand button */}
-        <Link to="/submit">
+        <Link to="/submit" className="ml-auto">
           <Button className="text-brandColors-darkBlue bg-brandColors-darkTan hover:bg-brandColors-darkTan hover:text-white">
             Submit Brand
           </Button>
