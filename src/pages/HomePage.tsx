@@ -1,30 +1,29 @@
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { BrandGrid } from "../components/ProductGrid";
 import { StatsCard } from "../components/StatsCard";
-import { fetchBrands, fetchFeaturedBrand } from "../services/brandService";
+import { fetchBrands } from "../services/brandService";
 import { Brand } from "../types";
 import { CategoriesList } from "../components/CategoriesList";
+import { brands } from "../data/brands"; // Import the mock brands data
 
 export default function HomePage() {
   const [activeCategory, setActiveCategory] = useState("All");
   
-  const { data: brands } = useQuery({
+  const { data: brandsData } = useQuery({
     queryKey: ['brands'],
     queryFn: fetchBrands
   });
 
-  const { data: featuredBrand } = useQuery({
-    queryKey: ['featuredBrand'],
-    queryFn: fetchFeaturedBrand
-  });
+  // Use Allbirds as the featured brand
+  const allbirdsBrand = brands.find(brand => brand.name === "Allbirds");
 
   const handleCategorySelect = (category: string) => {
     setActiveCategory(category);
   };
 
-  const totalBrands = brands?.length || 64;
+  const totalBrands = brandsData?.length || 64;
 
   return (
     <div className="min-h-screen">
@@ -33,8 +32,8 @@ export default function HomePage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
           <StatsCard 
             title="Today's New Brand" 
-            value={featuredBrand?.name || "Loading..."} 
-            brand={featuredBrand || undefined}
+            value={allbirdsBrand?.name || "Loading..."} 
+            brand={allbirdsBrand}
           />
           <StatsCard title="Total Brands" value={totalBrands.toString()} />
         </div>
