@@ -1,6 +1,6 @@
 
 import { Link } from "react-router-dom";
-import { Twitter, Linkedin } from "lucide-react";
+import { X, Linkedin } from "lucide-react";
 
 export function Footer() {
   return (
@@ -19,7 +19,7 @@ export function Footer() {
             rel="noopener noreferrer"
             className="text-white hover:text-brandColors-darkTan transition-colors"
           >
-            <Twitter size={20} />
+            <X size={20} />
           </a>
           <a 
             href="https://www.linkedin.com/in/joseph-good1/" 
