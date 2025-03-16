@@ -29,15 +29,17 @@ export function Header() {
 
   return (
     <header className="border-b sticky top-0 z-10 bg-brandColors-darkBlue text-white">
-      <div className="container flex items-center h-16 px-4 md:px-6">
+      <div className="container mx-auto flex items-center justify-between h-16 px-4 md:px-6">
         {/* Logo */}
-        <Link to="/" className="font-bold text-xl text-white mr-auto">
-          Aro
-        </Link>
+        <div className="w-32">
+          <Link to="/" className="font-bold text-xl text-white">
+            Aro
+          </Link>
+        </div>
 
-        {/* Category navigation - adjusted for better centering */}
-        <nav className="hidden md:flex items-center absolute left-1/2 transform -translate-x-1/2">
-          <div className="flex items-center space-x-1">
+        {/* Category navigation - centered with fixed width */}
+        <nav className="hidden md:block flex-1 text-center">
+          <div className="inline-flex items-center justify-center space-x-1">
             {categories.map((category) => (
               <NavItem 
                 key={category}
@@ -51,11 +53,13 @@ export function Header() {
         </nav>
 
         {/* Submit Brand button */}
-        <Link to="/submit" className="ml-auto">
-          <Button className="text-brandColors-darkBlue bg-brandColors-darkTan hover:bg-brandColors-darkTan hover:text-white">
-            Submit Brand
-          </Button>
-        </Link>
+        <div className="w-32 text-right">
+          <Link to="/submit">
+            <Button className="text-brandColors-darkBlue bg-brandColors-darkTan hover:bg-brandColors-darkTan hover:text-white">
+              Submit Brand
+            </Button>
+          </Link>
+        </div>
       </div>
     </header>
   );
