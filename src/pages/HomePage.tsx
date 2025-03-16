@@ -18,6 +18,9 @@ export default function HomePage() {
   // Use Allbirds as the featured brand
   const allbirdsBrand = brands.find(brand => brand.name === "Allbirds");
 
+  // Get the founder data from Allbirds for Maker of the Month
+  const makerOfMonth = allbirdsBrand?.founder;
+
   const totalBrands = brandsData?.length || 64;
 
   return (
@@ -26,11 +29,15 @@ export default function HomePage() {
         {/* Stats Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
           <StatsCard 
-            title="Today's New Brand" 
+            title="Brand of the Month" 
             value={allbirdsBrand?.name || "Loading..."} 
             brand={allbirdsBrand}
           />
-          <StatsCard title="Total Brands" value={totalBrands.toString()} />
+          <StatsCard 
+            title="Maker of the Month" 
+            value={makerOfMonth?.name || "Loading..."}
+            person={makerOfMonth}
+          />
         </div>
         
         {/* Brands Section */}
