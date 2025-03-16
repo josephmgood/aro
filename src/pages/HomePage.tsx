@@ -1,9 +1,11 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { BrandGrid } from "../components/ProductGrid";
 import { StatsCard } from "../components/StatsCard";
-import { fetchBrands } from "../services/brandService";
+import { fetchBrands, fetchFeaturedBrand } from "../services/brandService";
+import { Brand } from "../types";
+import { CategoriesList } from "../components/CategoriesList";
 
 export default function HomePage() {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -13,12 +15,15 @@ export default function HomePage() {
     queryFn: fetchBrands
   });
 
+  const { data: featuredBrand } = useQuery({
+    queryKey: ['featuredBrand'],
+    queryFn: fetchFeaturedBrand
+  });
+
   const handleCategorySelect = (category: string) => {
     setActiveCategory(category);
   };
 
-  // Calculate total sales as a mock value
-  const totalSales = "127.5 ETH";
   const totalBrands = brands?.length || 64;
 
   return (
@@ -26,13 +31,25 @@ export default function HomePage() {
       <div className="container py-8 px-4 md:px-6">
         {/* Stats Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
-          <StatsCard title="Total sales" value={totalSales} />
+          <StatsCard 
+            title="Today's New Brand" 
+            value={featuredBrand?.name || "Loading..."} 
+            brand={featuredBrand || undefined}
+          />
           <StatsCard title="Total Brands" value={totalBrands.toString()} />
+        </div>
+        
+        {/* Category Filter */}
+        <div className="mb-6">
+          <CategoriesList 
+            activeCategory={activeCategory} 
+            onSelectCategory={handleCategorySelect}
+          />
         </div>
         
         {/* Brands Section */}
         <div className="mb-10">
-          <h2 className="text-2xl font-bold mb-6">Brands</h2>
+          <h2 className="text-2xl font-bold mb-6 text-white">Brands</h2>
           
           <BrandGrid 
             filter={activeCategory === "All" ? undefined : activeCategory} 

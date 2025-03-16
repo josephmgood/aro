@@ -3,13 +3,12 @@ import { Button } from "./ui/button";
 
 const categories = [
   "All",
-  "Beauty",
-  "Fashion",
+  "Drinks",
+  "Snacks",
   "Food",
-  "Health",
+  "Beauty",
   "Home",
-  "Wellness",
-  "Pets",
+  "Health"
 ];
 
 interface CategoriesListProps {
@@ -32,7 +31,7 @@ export function CategoriesList({ activeCategory = "All", onSelectCategory }: Cat
           variant={activeCategory === category ? "default" : "outline"}
           size="sm"
           onClick={() => handleCategoryClick(category)}
-          className={activeCategory === category ? "bg-primary hover:bg-primary/90" : ""}
+          className={activeCategory === category ? "bg-white text-black hover:bg-gray-200" : "border-gray-600 text-white hover:bg-gray-800"}
         >
           {category}
         </Button>

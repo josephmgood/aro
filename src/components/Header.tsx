@@ -1,26 +1,49 @@
 
 import { Link, useLocation } from "react-router-dom";
+import { Button } from "./ui/button";
 
 export function Header() {
   const location = useLocation();
   
   // Check which nav item is active
-  const isActive = (path: string) => location.pathname === path;
+  const isActive = (path: string) => {
+    // For category paths, check if the pathname includes the category
+    if (path.startsWith('/category/')) {
+      const category = path.split('/').pop();
+      return location.pathname === path || location.pathname === `/categories?category=${category}`;
+    }
+    return location.pathname === path;
+  };
+
+  const categories = ["Drinks", "Snacks", "Food", "Beauty", "Home", "Health"];
 
   return (
-    <header className="border-b sticky top-0 z-10 bg-white">
-      <div className="container flex items-center justify-center h-16 px-4 md:px-6">
-        <nav className="flex items-center space-x-1">
-          <NavItem to="/" isActive={isActive("/")}>
-            Home
-          </NavItem>
-          <NavItem to="/categories" isActive={isActive("/categories")}>
-            Listings
-          </NavItem>
-          <NavItem to="/submit" isActive={isActive("/submit")}>
-            Sales
-          </NavItem>
+    <header className="border-b sticky top-0 z-10 bg-black text-white">
+      <div className="container flex items-center justify-between h-16 px-4 md:px-6">
+        {/* Logo */}
+        <Link to="/" className="font-bold text-xl text-white">
+          Aro
+        </Link>
+
+        {/* Category navigation */}
+        <nav className="hidden md:flex items-center space-x-1">
+          {categories.map((category) => (
+            <NavItem 
+              key={category}
+              to={`/categories?category=${category}`} 
+              isActive={isActive(`/categories?category=${category}`)}
+            >
+              {category}
+            </NavItem>
+          ))}
         </nav>
+
+        {/* Submit Brand button */}
+        <Link to="/submit">
+          <Button variant="outline" className="border-white text-white hover:bg-white hover:text-black">
+            Submit Brand
+          </Button>
+        </Link>
       </div>
     </header>
   );
@@ -38,8 +61,8 @@ function NavItem({ to, isActive, children }: NavItemProps) {
       to={to}
       className={`px-4 py-2 text-sm font-medium rounded-full transition-colors ${
         isActive
-          ? "bg-gray-200 text-gray-900"
-          : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+          ? "bg-white text-black"
+          : "text-white hover:bg-gray-800"
       }`}
     >
       {children}
