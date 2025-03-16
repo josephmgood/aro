@@ -5,7 +5,6 @@ import { BrandGrid } from "../components/ProductGrid";
 import { StatsCard } from "../components/StatsCard";
 import { fetchBrands } from "../services/brandService";
 import { Brand } from "../types";
-import { CategoriesList } from "../components/CategoriesList";
 import { brands } from "../data/brands"; // Import the mock brands data
 
 export default function HomePage() {
@@ -18,10 +17,6 @@ export default function HomePage() {
 
   // Use Allbirds as the featured brand
   const allbirdsBrand = brands.find(brand => brand.name === "Allbirds");
-
-  const handleCategorySelect = (category: string) => {
-    setActiveCategory(category);
-  };
 
   const totalBrands = brandsData?.length || 64;
 
@@ -36,14 +31,6 @@ export default function HomePage() {
             brand={allbirdsBrand}
           />
           <StatsCard title="Total Brands" value={totalBrands.toString()} />
-        </div>
-        
-        {/* Category Filter */}
-        <div className="mb-6">
-          <CategoriesList 
-            activeCategory={activeCategory} 
-            onSelectCategory={handleCategorySelect}
-          />
         </div>
         
         {/* Brands Section */}
