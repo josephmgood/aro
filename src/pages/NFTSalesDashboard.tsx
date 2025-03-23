@@ -20,7 +20,7 @@ export default function NFTSalesDashboard() {
     {
       id: "1",
       title: "The Only Ghost I'm Haunted By",
-      image: "/lovable-uploads/d362c45c-974e-4e14-95f0-b554972f9994.png",
+      image: "/lovable-uploads/8cdb6d4d-b9d3-474d-9048-98e1f87d9ef4.png",
       creator: {
         name: "Eric Pause",
         username: "EricPause",
@@ -31,7 +31,7 @@ export default function NFTSalesDashboard() {
     {
       id: "2",
       title: "Embrace",
-      image: "/lovable-uploads/d362c45c-974e-4e14-95f0-b554972f9994.png",
+      image: "/lovable-uploads/8cdb6d4d-b9d3-474d-9048-98e1f87d9ef4.png",
       creator: {
         name: "Wyn Jackz",
         username: "wynjackz",
@@ -42,7 +42,7 @@ export default function NFTSalesDashboard() {
     {
       id: "3",
       title: "the hidden king of cups",
-      image: "/lovable-uploads/d362c45c-974e-4e14-95f0-b554972f9994.png",
+      image: "/lovable-uploads/8cdb6d4d-b9d3-474d-9048-98e1f87d9ef4.png",
       creator: {
         name: "Zala Faz Zalas",
         username: "zala_faz_zalas",
@@ -53,7 +53,7 @@ export default function NFTSalesDashboard() {
     {
       id: "4",
       title: "High Low - somewhere in between",
-      image: "/lovable-uploads/d362c45c-974e-4e14-95f0-b554972f9994.png",
+      image: "/lovable-uploads/8cdb6d4d-b9d3-474d-9048-98e1f87d9ef4.png",
       creator: {
         name: "SIGMA-X",
         username: "SIGMA-X",
@@ -64,12 +64,67 @@ export default function NFTSalesDashboard() {
     {
       id: "5",
       title: "The unconscious perception of...",
-      image: "/lovable-uploads/d362c45c-974e-4e14-95f0-b554972f9994.png",
+      image: "/lovable-uploads/8cdb6d4d-b9d3-474d-9048-98e1f87d9ef4.png",
       creator: {
         name: "Samantha Cavet",
         username: "samanthacavet",
       },
       price: 3.71,
+      sold: true
+    },
+    {
+      id: "6",
+      title: "Untitled #45",
+      image: "/lovable-uploads/8cdb6d4d-b9d3-474d-9048-98e1f87d9ef4.png",
+      creator: {
+        name: "Creator 6",
+        username: "creator6",
+      },
+      price: 1.85,
+      sold: true
+    },
+    {
+      id: "7",
+      title: "Digital Dreams",
+      image: "/lovable-uploads/8cdb6d4d-b9d3-474d-9048-98e1f87d9ef4.png",
+      creator: {
+        name: "Creator 7",
+        username: "creator7",
+      },
+      price: 4.20,
+      sold: true
+    },
+    {
+      id: "8",
+      title: "Abstract Reality",
+      image: "/lovable-uploads/8cdb6d4d-b9d3-474d-9048-98e1f87d9ef4.png",
+      creator: {
+        name: "Creator 8",
+        username: "creator8",
+      },
+      price: 5.30,
+      sold: true
+    },
+    {
+      id: "9",
+      title: "Virtual Landscape",
+      image: "/lovable-uploads/8cdb6d4d-b9d3-474d-9048-98e1f87d9ef4.png",
+      creator: {
+        name: "Creator 9",
+        username: "creator9",
+      },
+      price: 6.15,
+      sold: true
+    },
+    {
+      id: "10",
+      title: "Crypto Art #001",
+      image: "/lovable-uploads/8cdb6d4d-b9d3-474d-9048-98e1f87d9ef4.png",
+      creator: {
+        name: "Creator 10",
+        username: "creator10",
+      },
+      price: 7.45,
       sold: true
     },
   ];
@@ -80,9 +135,9 @@ export default function NFTSalesDashboard() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Custom Header for NFT Dashboard */}
+      {/* Custom Header */}
       <header className="border-b sticky top-0 z-10 bg-white">
-        <div className="container mx-auto flex items-center justify-center h-16 px-4 md:px-6">
+        <div className="container mx-auto flex items-center justify-center h-16 px-4">
           <nav className="flex space-x-8">
             <Link to="/" className="font-medium text-gray-500 hover:text-gray-900">Home</Link>
             <Link to="/listings" className="font-medium text-gray-900">Listings</Link>
@@ -91,34 +146,34 @@ export default function NFTSalesDashboard() {
         </div>
       </header>
 
-      <main className="container mx-auto px-4 py-8">
+      <main className="container mx-auto px-4 py-8 pb-20">
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
           <div className="bg-black text-white p-6 rounded-lg">
-            <div className="text-sm text-gray-300">Total sales</div>
-            <div className="text-5xl font-bold mt-2">{totalSales.toFixed(1)} ETH</div>
+            <div className="text-sm text-gray-400">Total sales</div>
+            <div className="text-5xl font-bold mt-2">127.5 ETH</div>
           </div>
           <div className="bg-black text-white p-6 rounded-lg">
-            <div className="text-sm text-gray-300">NFTs sold</div>
-            <div className="text-5xl font-bold mt-2">{totalNFTsSold}</div>
+            <div className="text-sm text-gray-400">NFTs sold</div>
+            <div className="text-5xl font-bold mt-2">64</div>
           </div>
         </div>
 
         {/* Sold NFTs Section */}
-        <div className="mb-12">
+        <div className="mb-16">
           <h2 className="text-3xl font-bold mb-6">Sold NFTs</h2>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {nfts.map((nft) => (
               <div key={nft.id} className="bg-gray-100 rounded-lg overflow-hidden">
-                <div className="p-4">
+                <div className="p-2">
                   <img 
                     src={nft.image} 
                     alt={nft.title} 
-                    className="w-full h-40 object-cover rounded-md"
+                    className="w-full aspect-square object-cover rounded-md"
                   />
                 </div>
-                <div className="px-4 pb-4">
+                <div className="px-3 pb-3">
                   <h3 className="font-medium text-sm">{nft.title}</h3>
                   <div className="flex items-center mt-2">
                     <div className="w-4 h-4 bg-gray-800 rounded-full mr-2"></div>
