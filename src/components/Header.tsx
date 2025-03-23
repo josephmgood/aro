@@ -52,8 +52,11 @@ export function Header() {
           </div>
         </nav>
 
-        {/* Submit Brand button */}
-        <div className="w-32 text-right">
+        {/* Submit Brand button and NFT Dashboard link */}
+        <div className="w-32 text-right flex items-center justify-end space-x-2">
+          <Link to="/nft-dashboard" className="text-white hover:text-brandColors-darkTan text-sm">
+            NFT Dashboard
+          </Link>
           <Link to="/submit">
             <Button className="text-brandColors-darkBlue bg-brandColors-darkTan hover:bg-brandColors-darkTan hover:text-white">
               Submit Brand
